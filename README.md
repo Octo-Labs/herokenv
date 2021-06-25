@@ -31,6 +31,18 @@ herokenv.populate_env_from_app
 
 Now your local process will have access to ENV vars that are set in your heroku app.
 
+If you want to only load some perticular ENV variables you can use `only:`
+
+```ruby
+herokenv.populate_env_from_app only: %w[ONLY_LOAD_THIS_VAR]
+```
+
+Or you can load everything except ones that you want to exclude using `except:`
+
+```ruby
+herokenv.populate_env_from_app except: %w[DO_NOT_LOAD_THIS_VAR]
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
