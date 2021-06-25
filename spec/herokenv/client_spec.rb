@@ -11,6 +11,7 @@ RSpec.describe Herokenv::Client do
   let(:herokenv){ Herokenv::Client.new oauth_token: token, app: app }
 
   before do
+    # Guard against ENV vars leaking from test to test
     heroku_config.keys.each do |var|
       expect(ENV['HEROKU_TEST_VAR']).to be_nil
     end
@@ -18,6 +19,7 @@ RSpec.describe Herokenv::Client do
   end
 
   after do
+    # Clean up to prevent ENV vars leaking from test to test
     heroku_config.keys.each do |var|
       ENV.delete var
     end
