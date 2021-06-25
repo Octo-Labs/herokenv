@@ -25,8 +25,8 @@ based on the values in a Heroku app.
 
 ```ruby
 require 'herokenv'
-herokenv = Herokenv::Client.new(oauth_token: 'xxx', app: '')
-herokenv.populate_env_from_app('your-heroku-app-name')
+herokenv = Herokenv::Client.new(oauth_token: 'xxx', app: 'stark-citadel-2145')
+herokenv.populate_env_from_app
 ```
 
 Now your local process will have access to ENV vars that are set in your heroku app.

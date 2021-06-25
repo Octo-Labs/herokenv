@@ -1,3 +1,4 @@
+require "herokenv/client"
 require "herokenv/version"
 
 module Herokenv
