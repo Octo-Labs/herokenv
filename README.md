@@ -1,8 +1,6 @@
 # Herokenv
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/herokenv`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Easily pull Heroku environment variables into non-Heroku environments.
 
 ## Installation
 
@@ -22,7 +20,16 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Before or during the boot stage of your app you can require `herokenv` and have it populate your ENV
+based on the values in a Heroku app.
+
+```ruby
+require 'herokenv'
+herokenv = Herokenv::Client.new(oauth_token: 'xxx', app: '')
+herokenv.populate_env_from_app('your-heroku-app-name')
+```
+
+Now your local process will have access to ENV vars that are set in your heroku app.
 
 ## Development
 
