@@ -9,9 +9,15 @@ module Herokenv
       @app = app
     end
 
-    def populate_env_from_app
+    def populate_env_from_app(only: nil, except: nil)
       configs = heroku.config_var.info_for_app(app)
       configs.each_pair do |var, value|
+        if except && except.include?(var)
+          next
+        end
+        if only && !only.include?(var)
+          next
+        end
         ENV[var] = value
       end
     end
